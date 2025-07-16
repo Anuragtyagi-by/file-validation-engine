@@ -45,10 +45,34 @@ const engine = new RuleEngine(rules, { chunkSize: 5000 }); // processes 5,000 ro
 
 ## Usage
 
-1. Define your rules as an array of objects specifying the column, validation function, error message, and optional condition.
-2. Create a `RuleEngine` instance and call `validateFile` with your input file and error output file.
 
-See `src/example.ts` for a sample usage.
+1. Define your rules as an array of objects specifying the column, type, validation options, custom validation, error message, and optional condition. Example:
+
+```js
+const ruleConfigs = [
+  { column: 'id', type: 'integer', nullable: false },
+  { column: 'price', type: 'number', maxDecimals: 3, nullable: true },
+  { column: 'name', type: 'string', max: 20, nullable: false, allowEmpty: false },
+  { column: 'description', type: 'string', nullable: true, allowEmpty: true },
+  { column: 'email', type: 'string', allowEmpty: true, customValidate: value => /.+@.+\..+/.test(value), errorMessage: 'must be a valid email format', condition: row => row['email'] !== '' },
+  { column: 'status', type: 'string', customValidate: (value, row) => value === 'active' || row['age'] > 18, errorMessage: 'must be active if age > 18' },
+];
+```
+
+2. Create rules using a helper (optional):
+```js
+const rules = ruleConfigs.map(makeRule);
+```
+
+3. Create a `RuleEngine` instance and validate your file:
+```js
+const engine = new RuleEngine(rules, { chunkSize: 5000 });
+const inputFile = 'input.csv';
+const errorFile = 'validation_error.txt';
+await engine.validateFile(inputFile, errorFile);
+```
+
+See `lib/example.js` for a sample usage.
 
 ## Install
 ```
