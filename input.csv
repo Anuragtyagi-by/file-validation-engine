@@ -1,0 +1,8 @@
+id,price,name,description,email,status,age
+1,10.99,John Doe,Test description,john@example.com,active,25
+2,5.5,Jane Smith,,jane.smith@domain.com,active,30
+3,,Bob,"",bob@,inactive,17
+4,100.1234,Alice Wonderland,Some notes,alice@wonderland.com,active,19
+5,7.2,,No name,,active,22
+6,abc,Charlie,Empty email,,inactive,16
+7,8.99,David,"",david@domain.com,active,20

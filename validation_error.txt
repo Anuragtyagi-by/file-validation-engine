@@ -1,0 +1,5 @@
+Row 3: [email] must be a valid email format (value: bob@)
+Row 3: [status] must be active if age > 18 (value: inactive)
+Row 4: [price] must be null or a number (max 3 decimals) (value: 100.1234)
+Row 6: [price] must be null or a number (max 3 decimals) (value: abc)
+Row 6: [status] must be active if age > 18 (value: inactive)
