@@ -1,6 +1,6 @@
 {
   "name": "file-validation-engine",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "A dynamic rule-based validation engine for Excel and CSV files",
   "main": "lib/index.js",
   "scripts": {
